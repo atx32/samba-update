@@ -14,6 +14,16 @@ bashio::log.info \
   "Service ${service} exited with code ${exit_code_service}" \
   "(by signal ${exit_code_signal})"
 
+if bashio::config.true 'mdns'; then
+bashio::log.info "Unregistering smb service in mDNS"
+app_hostname=$(hostname)
+gdbus call --system \
+  --dest=org.freedesktop.resolve1 \
+  --object-path=/org/freedesktop/resolve1 \
+  --method=org.freedesktop.resolve1.Manager.UnregisterService \
+  "/org/freedesktop/resolve1/dnssd/${app_hostname//-/_2d}"
+fi
+
 if [[ "${exit_code_service}" -eq 256 ]]; then
   if [[ "${exit_code_container}" -eq 0 ]]; then
     echo $((128 + exit_code_signal)) > /run/s6-linux-init-container-results/exitcode

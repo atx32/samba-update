@@ -48,6 +48,7 @@ enabled_shares:
   - ssl
 compatibility_mode: false
 apple_compatibility_mode: true
+mdns: true
 netbios: true
 local_master: true
 server_signing: "default"
@@ -105,6 +106,12 @@ Defaults to `false`.
 
 Enable Samba configurations to improve interoperability with Apple devices.
 This can cause issues with file systems that do not support xattr such as exFAT.
+
+Defaults to `true`.
+
+### Option: `mdns`
+
+Enable service discovery over mDNS.
 
 Defaults to `true`.
 
