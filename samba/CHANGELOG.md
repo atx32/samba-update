@@ -1,5 +1,9 @@
 # Changelog
 
+## 12.9.0
+
+- Add service discovery over mDNS with a configuration option to disable.
+
 ## 12.8.1
 
 - Normalize stored `enabled_shares` values to lower case at startup. Values
