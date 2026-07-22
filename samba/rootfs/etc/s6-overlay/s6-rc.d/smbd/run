@@ -10,7 +10,7 @@ gdbus call --system \
   --dest org.freedesktop.resolve1 \
   --object-path /org/freedesktop/resolve1 \
   --method org.freedesktop.resolve1.Manager.RegisterService \
-  $(hostname) \
+  "$(hostname)" \
   "%H" \
   "_smb._tcp" \
   445 \
